@@ -9,7 +9,7 @@ export const LeftNavigation = () => {
     <>
       <p>Management</p>
       <Link to={navigationRoutes.dashboard.path}>Dashboard</Link>
-      <Link to={""}>Sports</Link>
+      <Link to={navigationRoutes.sports.path}>Sports</Link>
       <Link to={""}>Competitions</Link>
       <Divider />
       <p>Planning</p>
