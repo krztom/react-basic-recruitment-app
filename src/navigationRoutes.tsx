@@ -1,5 +1,6 @@
 import { DashboardScreen } from "./screens/Dashboard";
 import { SportsScreen } from "./screens/Sports";
+import { Error404 } from "./screens/404";
 
 type NavigationRoute = {
   path: string;
@@ -15,5 +16,21 @@ export const navigationRoutes: NavigationRoutes = {
   sports: {
     path: "/sports",
     element: <SportsScreen />,
+  },
+  competitions: {
+    path: "/competitions",
+    element: <Error404 />,
+  },
+  scheduling: {
+    path: "/scheduling",
+    element: <Error404 />,
+  },
+  organisations: {
+    path: "/organisations",
+    element: <Error404 />,
+  },
+  users: {
+    path: "/users",
+    element: <Error404 />,
   },
 };
