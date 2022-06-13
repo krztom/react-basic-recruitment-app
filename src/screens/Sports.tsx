@@ -3,6 +3,7 @@ import { SportsType, SportType } from "../types/sports.types";
 import { NoResults } from "../components/NoResults/NoResults";
 import { TableColumn } from "../components/Table/Table";
 import { Visibility } from "@mui/icons-material";
+import {getSports, getSportById} from '../service/sports.service'
 
 export const SportsScreen = () => {
   const [sports, setSports] = useState<SportsType | undefined>(undefined);
@@ -26,6 +27,16 @@ export const SportsScreen = () => {
 
   useEffect(() => {
     // TODO: get data from sports.service
+    console.log(getSports());
+    getSports().then((value) => {
+      console.log(value);
+      setSports(value)
+      console.log(sports)
+      // expected output: "Success!"
+    });
+
+
+
   }, []);
 
   if (!sports) {

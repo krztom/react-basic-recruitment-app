@@ -38,3 +38,5 @@ const sports: SportsType = {
 export const getSports = async (): Promise<SportsType> => sports;
 export const getSportById = async (id: SportType["id"]) =>
   sports.items.find((s) => s.id === id);
+
+
