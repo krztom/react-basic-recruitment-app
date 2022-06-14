@@ -23,7 +23,6 @@ function App() {
     <ThemeProvider theme={theme}>
       <BrowserRouter>
         <TopBar />
-
         <Grid container>
           <Grid item sx={{ width: 200 }}>
             <LeftNavigation />
