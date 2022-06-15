@@ -14,8 +14,8 @@ import AdbIcon from '@mui/icons-material/Adb';
 
 export const TopBar = () => {
     return (
-        <Box sx={{ flexGrow: 1 }}>
-          <AppBar color="secondary" sx={{ zIndex: 1400}}>
+        <Box sx={{ flexGrow: 3 }}>
+          <AppBar position="relative" color="secondary" sx={{ zIndex: 1400}}>
             <Toolbar>
             <Logo style={{
               width: "10rem"

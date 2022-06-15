@@ -3,7 +3,8 @@ import { navigationRoutes } from "../navigationRoutes";
 import { DashboardItem, DashboardType } from "../types/dashboard.types";
 import { NoResults } from "../components/NoResults/NoResults";
 import { getDashboards } from '../service/dashboard.service'
-import { Grid, Box, Card, CardActions, CardContent, Button, Typography, CardHeader  } from '@mui/material';
+import { Grid, Box, Card, CardActions, CardContent, Button, Typography, CardHeader, Link  } from '@mui/material';
+import { padding } from "@mui/system";
 
 export const DashboardScreen = () => {
   const [items, setItems] = useState<DashboardType[]>([]);
@@ -16,16 +17,19 @@ export const DashboardScreen = () => {
       case DashboardItem.SPORTS:
         return navigationRoutes.sports.path;
       case DashboardItem.COMPETITIONS:
+        return navigationRoutes.competitions.path;
       case DashboardItem.ORGANISATIONS:
+        return navigationRoutes.organisations.path;
       case DashboardItem.USERS:
+        return navigationRoutes.users.path;
       case DashboardItem.SCHEDULING:
         return navigationRoutes.dashboard.path;
+      default: return navigationRoutes.dashboard.path;
     }
   };
 
   useEffect(() => {
     getDashboards().then((value) => {
-      console.log(value)
       setItems(value)
     })
     // TODO: get data from dashboard.service
@@ -35,31 +39,39 @@ export const DashboardScreen = () => {
     return <NoResults />;
   }
 
+
+
   return (
     <>
-    <Box sx={{ width: '100%' }}>
-      <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
+    {/* <Box sx={{ width: '100%' }}> */}
+      <Grid container rowSpacing={6} columnSpacing={3}>
           {items.map(item => {
+            type DashboardItemValue = `${DashboardItem}`;
+            const LinkToScreen = (value: DashboardItemValue) => getLinkTo(value as DashboardItem);
+
             return (
-              <Grid id={item.id} item xs={6}>
-                <Card>
-                  {/* <CardHeader title="Shrimp and Chorizo Paella">
-                    <Typography gutterBottom variant="h5" component="h2">
-                      {item.title}
-                    </Typography>
-                  </CardHeader> */}
-                  <CardContent>
-                    <Typography gutterBottom variant="h5" component="h2">
-                      {item.title}
-                    </Typography>
+              <Grid key={item.id} id={item.id} item xs={6}>
+                <Card
+                   sx={{ height: 'auto'}}
+                >
+                  <CardHeader
+                    title={item.title}
+                    titleTypographyProps={{variant:'body1' }}
+                    sx={{ background: 'black', color: 'white', padding: '1rem 2rem' }}
+                  />
+                  <CardContent  sx={{ padding: '1rem 2rem' }}>
                     <Typography variant="body2" color="textSecondary" component="p">
                       {item.text}
                     </Typography>
                   </CardContent>
-                  <CardActions>
-                    <Button size="small" color="primary">
-                      More info
-                    </Button>
+                  <CardActions
+                    sx={{ justifyContent: 'flex-end', padding: '1rem 2rem' }}
+                    >
+                      <Link href={LinkToScreen(item.id)} underline={'none'}>
+                        <Button size="small" color="primary">
+                          More info
+                        </Button>
+                      </Link>
                   </CardActions>
                 </Card>
               </Grid>
@@ -67,7 +79,7 @@ export const DashboardScreen = () => {
             }
           )}
       </Grid>
-    </Box>
+    {/* </Box> */}
 
     </>
   )

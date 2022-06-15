@@ -6,7 +6,6 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import MailIcon from '@mui/icons-material/Mail';
 
-const drawerWidth = 240;
 /*
   icons can be found in here: https://mui.com/material-ui/material-icons/
  */
